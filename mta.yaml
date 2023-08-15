@@ -1,0 +1,21 @@
+_schema-version: '3.2'
+ID: cap-intsuite
+version: 1.0.0
+
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm install --production
+        - npx -p @sap/cds-dk cds build --production
+
+modules:
+  - name: cap-intsuite
+    type: nodejs
+    path: gen/srv
+    parameters:
+      buildpack: nodejs_buildpack
+    provides:
+      - name: cap-mqtt-api
+        properties:
+          srv-url: ${default-url}
