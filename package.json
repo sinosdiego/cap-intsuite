@@ -7,9 +7,14 @@
   "private": true,
   "dependencies": {
     "@sap/cds": "^7",
+    "@sap/xsenv": "^4.0.0",
     "@sap/xssec": "^3.3.3",
+    "axios": "^1.4.0",
+    "axios-oauth-client": "^2.0.2",
     "express": "^4",
     "mqtt": "^5.0.2",
+    "node-fetch": "^2.6.12",
+    "node-jose": "^2.2.0",
     "passport": "^0.6.0"
   },
   "devDependencies": {

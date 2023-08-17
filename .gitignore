@@ -1,3 +1,6 @@
+# Local credentials
+creds-local.js
+
 # CAP cap-intsuite
 _out
 *.db
