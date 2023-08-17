@@ -38,7 +38,7 @@ module.exports = (endpoint) => {
         //adicionado o async a chamada da função
         //chamada para as credenciais criadas no CredentialStore
         //acho que o nome deveria ser o nome da instancia do CredentialStore criado ou do namespace
-        const targetCred = await credentials.get("integration-suite");
+        const targetCred = await credentials.get("cap-intsuite");
 
 
 
