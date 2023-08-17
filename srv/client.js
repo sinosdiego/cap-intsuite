@@ -40,9 +40,6 @@ module.exports = (endpoint) => {
         //acho que o nome deveria ser o nome da instancia do CredentialStore criado ou do namespace
         const targetCred = await credentials.get("cap-intsuite");
 
-
-
-
         //get bearer token
         const authResponse = await oauth.clientCredentials(
             axios.create(),
