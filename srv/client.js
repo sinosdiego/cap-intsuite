@@ -50,21 +50,21 @@ module.exports = (endpoint) => {
 
         console.log(`[INFO] Credentials Ok`);
 
-        try {
-            //invoke integration flow
-            const response = await axios.post(config.targetUrl, message, {
-                headers: {
-                    "Authorization": `Bearer ${authResponse.access_token}`,
-                    "Content-Type": "text/plain"
-                },
-                httpsAgent: targetAgent
-            });
+        // try {
+        //     //invoke integration flow
+        //     const response = await axios.post(config.targetUrl, message, {
+        //         headers: {
+        //             "Authorization": `Bearer ${authResponse.access_token}`,
+        //             "Content-Type": "text/plain"
+        //         },
+        //         httpsAgent: targetAgent
+        //     });
 
-            console.log(`[INFO] Successfully invoked integration flow: Received response "${response}"`);
+        //     console.log(`[INFO] Successfully invoked integration flow: Received response "${response}"`);
 
-        } catch (error) {
-            console.log(`[ERROR] Failed: ${error}`);
-        }
+        // } catch (error) {
+        //     console.log(`[ERROR] Failed: ${error}`);
+        // }
     });
 
     //OData functions
