@@ -36,6 +36,7 @@ function headers(binding, namespace, init) {
     const result = new fetch.Headers(init);
     result.set("Authorization", `Basic ${Buffer.from(`${binding.username}:${binding.password}`).toString("base64")}`);
     result.set("sapcp-credstore-namespace", namespace);
+    console.log(`[INFODD] headers result ${result}`);
     return result;
 }
 
@@ -46,6 +47,7 @@ async function fetchAndDecrypt(privateKey, url, method, headers, body) {
         .then((payload) => decryptPayload(privateKey, payload))
         .then(JSON.parse);
     console.log(`[INFODD] fetchAndDecrypt ${result}`);
+
     return result;
 }
 
