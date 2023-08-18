@@ -59,6 +59,8 @@ async function fetchAndDecrypt(privateKey, url, method, headers, body) {
 async function readCredential(binding, namespace, type, name) {
     console.log(`[INFODD] readCredential private_key ${binding.encryption.client_private_key}`);
     console.log(`[INFODD] readCredential url ${binding.url}`);
+    console.log(`[INFODD] readCredential url ${binding.username}`);
+    console.log(`[INFODD] readCredential url ${binding.password}`);
     console.log(`[INFODD] readCredential type ${type}`);
     return fetchAndDecrypt(
         binding.encryption.client_private_key,
