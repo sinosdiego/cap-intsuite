@@ -66,6 +66,7 @@ function getLocalCredential(name) {
  * @returns {Promise<Credential>} Credential extracted from the credential store
  */
 async function getCredStoreCredential(name) {
+    
     const credStore = require("./credStore");
     const credStoreCredential = await credStore.readCredential(
         credStoreBinding,

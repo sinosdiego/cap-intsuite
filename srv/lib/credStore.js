@@ -15,6 +15,7 @@ const jose = require("node-jose");
 
 
 function checkStatus(response) {
+    console.log(`[INFODD] CheckStatus ${response.ok}`);
     if (!response.ok) {
         throw Error(`Unexpected status code: ${response.status}`);
     }
@@ -44,6 +45,7 @@ async function fetchAndDecrypt(privateKey, url, method, headers, body) {
         .then((response) => response.text())
         .then((payload) => decryptPayload(privateKey, payload))
         .then(JSON.parse);
+    console.log(`[INFODD] fetchAndDecrypt ${result}`);
     return result;
 }
 
