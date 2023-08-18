@@ -34,8 +34,8 @@ async function decryptPayload(privateKey, payload) {
 
 function headers(binding, namespace, init) {
     const result = new fetch.Headers(init);
-    // result.set("Authorization", `Basic ${Buffer.from(`${binding.username}:${binding.password}`).toString("base64")}`);
-    result.set("Authorization", `Basic ${Buffer.from(`${binding.username}`).toString("base64")}`);
+    result.set("Authorization", `Basic ${Buffer.from(`${binding.username}:${binding.password}`).toString("base64")}`);
+    // result.set("Authorization", `Basic ${Buffer.from(`${binding.username}`).toString("base64")}`);
     result.set("sapcp-credstore-namespace", namespace);
     console.log(`[INFODD] headers result ${result}`);
     return result;
@@ -60,7 +60,6 @@ async function fetchAndDecrypt(privateKey, url, method, headers, body) {
  * @returns Credential retrieved from the credential store
  */
 async function readCredential(binding, namespace, type, name) {
-    const util = require('util');
     console.log(`[INFODD] readCredential private_key ${binding.encryption.client_private_key}`);
     console.log(`[INFODD] readCredential url ${binding.url}`);
     console.log(`[INFODD] readCredential username ${binding.username}`);
@@ -68,7 +67,7 @@ async function readCredential(binding, namespace, type, name) {
     console.log(`[INFODD] readCredential type ${type}`);
     console.log(`[INFODD] readCredential header ${Buffer.from(`${binding.username}:${binding.password}`).toString("base64")}`);
     console.log(`[INFODD] readCredential name ${encodeURIComponent(name)}`);
-    console.log(`[INFODD] readCredential body ${util.inspect(headers(binding, namespace), false, null, true)}`);
+    // console.log(`[INFODD] readCredential body ${util.inspect(headers(binding, namespace), false, null, true)}`);
 
     return fetchAndDecrypt(
         binding.encryption.client_private_key,
