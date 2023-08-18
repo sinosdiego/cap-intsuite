@@ -65,6 +65,8 @@ async function readCredential(binding, namespace, type, name) {
     console.log(`[INFODD] readCredential password ${binding.password}`);
     console.log(`[INFODD] readCredential type ${type}`);
     console.log(`[INFODD] readCredential header ${Buffer.from(`${binding.username}:${binding.password}`).toString("base64")}`);
+    console.log(`[INFODD] readCredential name ${encodeURIComponent(name)}`);
+    console.log(`[INFODD] readCredential body ${headers(binding, namespace)}`);
 
     return fetchAndDecrypt(
         binding.encryption.client_private_key,
