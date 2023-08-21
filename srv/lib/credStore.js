@@ -34,15 +34,15 @@ async function decryptPayload(privateKey, payload) {
 
 function headers(binding, namespace, init) {
     const result = new fetch.Headers(init);
-    result.set("Authorization", `Basic ${Buffer.from(`${binding.username}:${binding.password}`).toString("base64")}`);
+    // result.set("Authorization", `Basic ${Buffer.from(`${binding.username}:${binding.password}`).toString("base64")}`);
     // result.set("Authorization", `Basic ${Buffer.from(`${binding.username}`).toString("base64")}`);
     result.set("sapcp-credstore-namespace", namespace);
     console.log(`[INFODD] headers result ${result}`);
     return result;
 }
 
-async function fetchAndDecrypt(privateKey, url, method, headers, body) {
-    const result = await fetch(url, { method, headers, body })
+async function fetchAndDecrypt(privateKey, url, method, headers, cert, key, body) {
+    const result = await fetch(url, { method, headers, agentOptions: { cert, key }, body })
         .then(checkStatus)
         .then((response) => response.text())
         .then((payload) => decryptPayload(privateKey, payload))
@@ -73,6 +73,8 @@ async function readCredential(binding, namespace, type, name) {
         binding.encryption.client_private_key,
         `${binding.url}/${type}?name=${encodeURIComponent(name)}`,
         "get",
-        headers(binding, namespace)
+        headers(binding, namespace),
+        binding.certificate,
+        binding.key
     );
 }

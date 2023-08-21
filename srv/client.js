@@ -51,7 +51,7 @@ module.exports = (endpoint) => {
         )();
 
         console.log(`[INFO] Credentials Ok`);
-        console.log(`[INFO] Token ${authResponse.access_token}`);
+        //console.log(`[INFO] Token ${authResponse.access_token}`);
 
         try {
             //invoke integration flow
@@ -63,7 +63,7 @@ module.exports = (endpoint) => {
                 httpsAgent: targetAgent
             });
 
-            console.log(`[INFO] Successfully invoked integration flow: Received response "${response}"`);
+            console.log(`[INFO] Successfully invoked integration flow: Received response "${response.body}"`);
 
         } catch (error) {
             console.log(`[ERROR] Failed: ${error}`);
