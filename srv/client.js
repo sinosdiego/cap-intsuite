@@ -63,7 +63,7 @@ module.exports = (endpoint) => {
                 httpsAgent: targetAgent
             });
 
-            console.log(`[INFO] Successfully invoked integration flow: Received response "${response.body}"`);
+            console.log(`[INFO] Successfully invoked integration flow: Received response "${response}"`);
 
         } catch (error) {
             console.log(`[ERROR] Failed: ${error}`);
