@@ -23,6 +23,8 @@ function checkStatus(response) {
 }
 
 async function decryptPayload(privateKey, payload) {
+    console.log(`[INFODD] decryptPayload privateKey ${privateKey}`);
+    console.log(`[INFODD] decryptPayload payload ${payload}`);
     const key = await jose.JWK.asKey(`-----BEGIN PRIVATE KEY-----${privateKey}-----END PRIVATE KEY-----`, "pem", {
         alg: "RSA-OAEP-256",
         enc: "A256GCM",
@@ -42,12 +44,12 @@ function headers(binding, namespace, init) {
 }
 
 async function fetchAndDecrypt(privateKey, url, method, headers, cert, key, body) {
-    const result = await fetch(url, { method, headers, agentOptions: { cert, key }, body })
+    // const result = await fetch(url, { method, headers, agentOptions: { cert, key }, body })
+    const result = await fetch(url, { method, headers, body })
         .then(checkStatus)
         .then((response) => response.text())
         .then((payload) => decryptPayload(privateKey, payload))
         .then(JSON.parse);
-    console.log(`[INFODD] fetchAndDecrypt ${result}`);
 
     return result;
 }
