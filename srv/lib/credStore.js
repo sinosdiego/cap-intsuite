@@ -36,7 +36,7 @@ async function decryptPayload(privateKey, payload) {
 
 function headers(binding, namespace, init) {
     const result = new fetch.Headers(init);
-    // result.set("Authorization", `Basic ${Buffer.from(`${binding.username}:${binding.password}`).toString("base64")}`);
+    result.set("Authorization", `Basic ${Buffer.from(`${binding.username}:${binding.password}`).toString("base64")}`);
     // result.set("Authorization", `Basic ${Buffer.from(`${binding.username}`).toString("base64")}`);
     result.set("sapcp-credstore-namespace", namespace);
     console.log(`[INFODD] headers result ${result}`);
